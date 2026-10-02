@@ -72,7 +72,8 @@ print(importance)
 plt.figure(figsize = (8,6))
 sns.barplot(x = importance.values, y = importance.index)
 plt.title("Feature Importance")
-plt.show()
+plt.ylabel("Feature")
+plt.savefig('images/feature_importance.png', dpi=150, bbox_inches='tight')
 
 actual = pbp_test.groupby(['down', 'ydstogo'])['play_type'].apply(lambda x: (x == 'pass').mean()).reset_index()
 actual.columns = ['down', 'ydstogo', 'rate']
@@ -107,4 +108,4 @@ for ax, d in zip(axes, downs):
     ax.set_ylabel("Pass Rate" if d == 1 else "")
 
 plt.tight_layout()
-plt.show()
+plt.savefig('images/pass_rate.png', dpi=150, bbox_inches='tight')
